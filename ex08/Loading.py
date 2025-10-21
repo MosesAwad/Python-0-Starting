@@ -18,7 +18,7 @@ def ft_tqdm(lst: range) -> None:
         bar = '█' * filled + ' ' * (bar_length - filled)
         display = f"{int(progress * 100):3d}%|{bar}| {i + 1}/{total}"
         print(f"\r{display}", end='', flush=True)
-        yield i
+        yield i  # Note 2
 
     print()
 
@@ -33,4 +33,15 @@ def ft_tqdm(lst: range) -> None:
         * The plus 25 is just extra space to get it to align with the display
             of the actual tqdm function. That extra space is because tqdm
             also displays timestamps and iterations/second rate but we dont.
+
+    Note 2
+        Consider something like this:
+            for elem in ft_tqdm(range(333)):
+                sleep(0.005)
+
+        * The for loop inside ft_tqdm is not benefitting from yield at all.
+        * That internal loop just runs to generate each item and update
+            the progress bar.
+        * The benefit of yield goes entirely to the outside for loop that’s
+            consuming ft_tqdm.
 """
