@@ -1,0 +1,10 @@
+This is ft_package!
+
+1. Just build it using it python3 -m build
+
+2. Install it using any one of the following:
+    • pip install ./dist/ft_package-0.0.1.tar.gz
+    • pip install ./dist/ft_package-0.0.1-py3-none-any.whl
+
+3. You're all set! Import it into your code as such:
+    from ft_package import count_in_list
