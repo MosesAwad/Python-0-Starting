@@ -17,8 +17,8 @@ def ft_tqdm(lst: range) -> None:
         filled = int(progress * bar_length)
         bar = '█' * filled + ' ' * (bar_length - filled)
         display = f"{int(progress * 100):3d}%|{bar}| {i + 1}/{total}"
-        print(f"\r{display}", end='', flush=True)
-        yield i  # Note 2
+        print(f"\r{display}", end='', flush=True)  # Note 2
+        yield i  # Note 3
 
     print()
 
@@ -35,6 +35,19 @@ def ft_tqdm(lst: range) -> None:
             also displays timestamps and iterations/second rate but we dont.
 
     Note 2
+        * When the print finishes, the final cursor position is after the last
+            character printed — so after the iteration counter, as in 222/222
+            for example.
+        * What you only ever see is the final result of the write, not the
+            intermediate cursor motion. That's why the \r is put at the start
+            of the string being printed. By the end of the iteration, the
+            cursor is in fact at the end of the line, but the next print of
+            the next iteration is the one that returns it back to the start.
+            Yes, the next print will automatically be on the same line
+            because we set end="", so the \r is just moving the cursor back
+            to the beginning of that line.
+
+    Note 3
         Consider something like this:
             for elem in ft_tqdm(range(333)):
                 sleep(0.005)
