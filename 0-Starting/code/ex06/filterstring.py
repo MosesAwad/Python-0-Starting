@@ -2,12 +2,12 @@ import sys
 from ft_filter import ft_filter
 
 
-def filterstring(string, n):
+def filterstring(S: str, N: int):
     """
         Returns a list of words in `S` with length greater than `N`.
     """
-    tokens = string.split()
-    result_arr = ft_filter(lambda token: len(token) > n, tokens)
+    tokens = S.split()
+    result_arr = ft_filter(lambda token: len(token) > N, tokens)
     return result_arr
 
 
