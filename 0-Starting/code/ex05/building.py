@@ -23,7 +23,7 @@ def paragraph_tally(string: str):
             space_count += 1
         elif string[i].isdigit():
             digit_count += 1
-        else:
+        elif string[i] in "!\"#$%&'()*+,-./:;<=>?@[]\\{}|":
             punc_count += 1
         char_count += 1
 
