@@ -2,6 +2,11 @@ import sys
 
 
 def to_morse_code(string):
+    """
+        Convert a given alphanumeric string into its Morse code
+        representation. Spaces are converted to '/', and characters
+        are separated by single spaces.
+    """
     nested_morse = {
         " ": "/",
         "A": ".-",
